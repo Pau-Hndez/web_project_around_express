@@ -5,10 +5,14 @@ const {
   getCards,
   createCard,
   deleteCardById,
+  likeCard,
+  dislikeCard,
 } = require("../controllers/cards");
 
-router.get("/cards", getCards);
-router.post("/cards", createCard);
-router.delete("/cards/:cardId", deleteCardById);
+router.get("/", getCards);
+router.post("/", createCard);
+router.delete("/:cardId", deleteCardById);
+router.put("/:cardId/likes", likeCard);
+router.delete("/:cardId/likes", dislikeCard);
 
 module.exports = router;
