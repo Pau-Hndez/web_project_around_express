@@ -37,7 +37,7 @@ module.exports.updateProfile = (req, res) => {
     },
   )
     .then((user) => res.send(user))
-    .catch((err) => res.status(500).send(err));
+    .catch((err) => res.status(500).send(res.message));
 };
 
 module.exports.updateAvatar = (req, res) => {

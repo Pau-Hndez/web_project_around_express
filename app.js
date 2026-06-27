@@ -25,6 +25,11 @@ app.use((req, res, next) => {
 
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
+app.use("*", (req, res) => {
+  res.status(404).send({
+    message: "Recurso solicitado no encontrado",
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`servidor corriendo http://localhost:${PORT}`);
