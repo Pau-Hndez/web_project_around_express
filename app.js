@@ -17,7 +17,7 @@ mongoose
 
 app.use((req, res, next) => {
   req.user = {
-    _id: "5d8b8592978f8bd833ca8133", // pega el _id del usuario de prueba que creamos en el paso anterior
+    _id: "5d8b8592978f8bd833ca8133",
   };
 
   next();
@@ -25,9 +25,9 @@ app.use((req, res, next) => {
 
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
-app.use("*", (req, res) => {
+app.use((req, res) => {
   res.status(404).send({
-    message: "Recurso solicitado no encontrado",
+    message: "Página no encontrada",
   });
 });
 

@@ -32,12 +32,16 @@ module.exports.updateProfile = (req, res) => {
     req.user._id,
     { name, about },
     {
-      new: true,
+      returnDocument: "after", //new:true is now depricated according to the newest Mongoose documentation
       runValidators: true,
     },
   )
     .then((user) => res.send(user))
-    .catch((err) => res.status(500).send(res.message));
+    .catch((err) =>
+      res.status(500).send({
+        message: err.message,
+      }),
+    );
 };
 
 module.exports.updateAvatar = (req, res) => {
@@ -46,10 +50,14 @@ module.exports.updateAvatar = (req, res) => {
     req.user._id,
     { avatar },
     {
-      new: true,
+      returnDocument: "after",
       runValidators: true,
     },
   )
     .then((user) => res.send(user))
-    .catch((err) => res.status(500).send(err));
+    .catch((err) =>
+      res.status(500).send({
+        message: err.message,
+      }),
+    );
 };
